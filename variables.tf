@@ -87,11 +87,6 @@ variable "enable_host_encryption" {
   default     = false
 }
 
-variable "enable_node_public_ip" {
-  type        = bool
-  description = "Whether or not to enable a public IP for each node in the node pool"
-  default     = false
-}
 
 variable "max_count" {
   type        = number
@@ -274,11 +269,6 @@ type = string
 default = "myk8scluster"
 }
 
-variable "public_network_access_enabled" {
-description = "Specifies whether public network access is enabled for the Kubernetes cluster."
-type = bool
-default = false
-}
 
 variable "private_cluster_enabled" {
 description = "Specifies whether the Kubernetes cluster is private."
@@ -286,11 +276,6 @@ type = bool
 default = true
 }
 
-variable "private_cluster_public_fqdn_enabled" {
-description = "Specifies whether the Kubernetes cluster has a public fully qualified domain name (FQDN) enabled."
-type = bool
-default = false
-}
 
 variable "enable_pod_security_policy" {
 type = bool
