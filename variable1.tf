@@ -295,3 +295,17 @@ type = bool
 description = "Enable open service mesh"
 default = false
 }
+
+
+variable "secret_rotation_enabled" {
+type = bool
+description = "Enable open service mesh"
+default = true
+}
+
+
+variable "secret_rotation_interval" {
+type = string
+description = "Enable open service mesh"
+default = "10"
+}
