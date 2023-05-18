@@ -1,3 +1,10 @@
+data "azurerm_virtual_network" "vnet" {
+  name                = azurerm_kubernetes_cluster.aks_cluster.network_profile[0].network_plugin[0].azure_vnet_config[0].name
+  resource_group_name = azurerm_kubernetes_cluster.aks_cluster.node_resource_group
+}
+
+
+
 resource "azurerm_kubernetes_cluster" "aks" {
     resource_group_name                     = "${var.resource_group_name}-${var.client_name}-${var.environment}"
     node_resource_group                     = "MC-${var.resource_group_name}-${var.client_name}-${var.environment}-by-Azure"
@@ -47,7 +54,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
     }
 
 #Integration
-    private_dns_zone_id                     = var.private_dns_zone_id
+    private_dns_zone_id                     = data.azurerm_virtual_network.vnet.private_dns_zone_id
     dns_prefix                              = var.dns_prefix
     private_cluster_enabled                 = var.private_cluster_enabled
     azure_policy_enabled                    = var.azure_policy_enabled 
